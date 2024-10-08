@@ -11,38 +11,16 @@ int global_var_it = 50;
 
 int main(int argc, char *argv[])
 {
-	int *heap_var;
+	
 	int local_var=50;
-	heap_var= malloc(sizeof(int));
+	int* heap_var= malloc(sizeof(int));
 	*heap_var=200;
 
-	void *addy[5];
-
-	addy[0]=&argc;
-	addy[1]=&local_var;
-	addy[2]=heap_var;
-	addy[3]=&global_var_un;
-	addy[4]=&global_var_it;
-
-	for(int i=0; i<5-1;i++)
-	{
-		for(int j=0; j<5-i-1;j++)
-		{
-			if(addy[j]<addy[i+1])
-			{
-			void *temp = addy[j];
-			addy[j] = addy[j+1];
-			addy[j+1]=temp;
-			}
-		}
-		
-	}
-
-	printf("Addresses from highest to lowest");
-	for(int i =0; i<5;i++)
-	{
-		printf("addresses: %p\n", addy[i]);
-	}
+        printf("Address of argc: %p\n", (void*)&argc);
+        printf("Address of local_var: %p\n", (void*)&local_var);
+        printf("Address of heap_var: %p\n", (void*)&heap_var);
+        printf("Address of global_var_un: %p\n", (void*)&global_var_un);
+        printf("Address of global_var_it: %p\n", (void*)&global_var_it);
 
 	return EXIT_SUCCESS;
 
